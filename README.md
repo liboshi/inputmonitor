@@ -1,2 +1,2 @@
-# inputmonitor
+# Inputmonitor
 Porting from xev project.
