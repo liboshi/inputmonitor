@@ -99,7 +99,7 @@ hash(const char *s)
 }
 
 /* lookup: look for s in hashtab */
-struct nlista *lookup(const char *s)
+struct nlist *lookup(const char *s)
 {
         struct nlist *np;
         for (np = hashtab[hash(s)]; np != NULL; np = np->next)
