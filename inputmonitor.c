@@ -760,6 +760,10 @@ main (int argc, char **argv)
                         case FocusOut:
                                 do_FocusOut (&event);
                                 break;
+                        case ClientMessage:
+                                XDestroyWindow(dpy, w);
+                                done = 1;
+                                break;
                         default:
                                 break;
                 }
