@@ -477,40 +477,6 @@ do_ButtonRelease (XEvent *eventp)
 }
 
 static void
-do_FocusIn (XEvent *eventp)
-{
-        XFocusChangeEvent *e = (XFocusChangeEvent *) eventp;
-        const char *mode, *detail;
-        char dmode[10], ddetail[10];
-
-        switch (e->mode) {
-                case NotifyNormal:  mode = "NotifyNormal"; break;
-                case NotifyGrab:  mode = "NotifyGrab"; break;
-                case NotifyUngrab:  mode = "NotifyUngrab"; break;
-                case NotifyWhileGrabbed:  mode = "NotifyWhileGrabbed"; break;
-                default:  mode = dmode, sprintf (dmode, "%u", e->mode); break;
-        }
-
-        switch (e->detail) {
-                case NotifyAncestor:  detail = "NotifyAncestor"; break;
-                case NotifyVirtual:  detail = "NotifyVirtual"; break;
-                case NotifyInferior:  detail = "NotifyInferior"; break;
-                case NotifyNonlinear:  detail = "NotifyNonlinear"; break;
-                case NotifyNonlinearVirtual:  detail = "NotifyNonlinearVirtual"; break;
-                case NotifyPointer:  detail = "NotifyPointer"; break;
-                case NotifyPointerRoot:  detail = "NotifyPointerRoot"; break;
-                case NotifyDetailNone:  detail = "NotifyDetailNone"; break;
-                default:  detail = ddetail; sprintf (ddetail, "%u", e->detail); break;
-        }
-}
-
-static void
-do_FocusOut (XEvent *eventp)
-{
-        do_FocusIn (eventp);		/* since it has same information */
-}
-
-static void
 set_sizehints (XSizeHints *hintp, int min_width, int min_height,
                 int defwidth, int defheight, int defx, int defy,
                 char *geom)
@@ -753,12 +719,6 @@ main (int argc, char **argv)
                                 break;
                         case ButtonRelease:
                                 do_ButtonRelease (&event);
-                                break;
-                        case FocusIn:
-                                do_FocusIn (&event);
-                                break;
-                        case FocusOut:
-                                do_FocusOut (&event);
                                 break;
                         case ClientMessage:
                                 XDestroyWindow(dpy, w);
