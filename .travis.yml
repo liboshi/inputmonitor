@@ -1,5 +1,5 @@
 language: c
-install: make
+install: true
 compiler: gcc
 script:
   - ./configure
