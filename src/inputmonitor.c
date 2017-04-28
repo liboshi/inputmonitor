@@ -430,7 +430,7 @@ static void
 do_KeyRelease (XEvent *eventp)
 {
         RELEASE = 1;
-        do_KeyPress (eventp);		/* since it has the same info */
+        do_KeyPress (eventp); /* since it has the same info */
 }
 
 static void
@@ -473,7 +473,7 @@ static void
 do_ButtonRelease (XEvent *eventp)
 {
         RELEASE = 1;
-        do_ButtonPress (eventp);		/* since it has the same info */
+        do_ButtonPress (eventp); /* since it has the same info */
 }
 
 static void
